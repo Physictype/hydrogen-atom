@@ -1,0 +1,36 @@
+html {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.quiz {
+    
+}
+.quizButton {
+    display: block;
+    background-color: white;
+    border: grey solid;
+    border-radius: 10px;
+    height: 50px;
+    width: 300px;
+    aspect-ratio: 1;
+}
+.optionName {
+    vertical-align: middle;
+    line-height: normal;
+    padding: 9px 11px 9px 11px;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 30px;
+    border: 2px black solid;
+    text-align: center;
+}
+.quizButton:hover {
+    background-color: #eeeeee;
+}
+.selected {
+    background-color: #eeeeee;
+}
+.selected > .optionName {
+    background-color: #6e6eff;
+    color: white;
+}

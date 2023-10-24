@@ -1,7 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-  $$\int_0^\infty \frac{1}{x}\,dx$$
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">   
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h3>The Hydrogen Atom</h3>
+        The simplest potential will be for a <b>neutral</b> Hydrogen atom. To find the potential energy, we can use Coulomb's law:
+        $$F=\frac{q_1q_2}{r^2}.$$
+        While this is not yet a potential energy function but a force, we can find the potential energy by taking the negative of its integral, which gives
+        $$\begin{align*}
+            V(r)&=-\int\frac{q_1q_2}{r^2}\,dr\\
+            &=-\left(-\frac{q_1q_2}{r}\right)\\
+            &=\frac{q_1q_2}{r}.
+        \end{align*}$$
+        Now, we plug this into the spherical (<a>?</a>) Schrödinger Equation, which gives
+        $$\begin{align*}
+            -\frac{\hbar^{2}}{2 m}\left[\frac{1}{r^{2}} \frac{\partial}{\partial r}\left(r^{2} \frac{\partial \psi}{\partial r}\right)+\frac{1}{r^{2} \sin \theta} \frac{\partial}{\partial \theta}\left(\sin \theta \frac{\partial \psi}{\partial \theta}\right)+\frac{1}{r^{2} \sin ^{2} \theta} \frac{\partial^{2} \psi}{\partial \phi^{2}}\right]+V\psi
+        \end{align*}$$
+        <div class="quiz">
+            <button class="quizButton">
+                <span class="optionName">A</span> $1+1=3$
+            </button>
+            <button class="quizButton selected">
+                <span class="optionName">B</span> $2+2=4$
+            </button>
+        </div>
+        <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+        <script src="quiz.js"></script>
+    </body>
 </html>
