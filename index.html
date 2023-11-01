@@ -6,7 +6,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">   
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <center><body>
+        in progress...
         <h3>The Hydrogen Atom</h3>
         The simplest potential will be for a <b>neutral</b> Hydrogen atom. To find the potential energy, we can use Coulomb's law:
         $$F=\frac{q_1q_2}{r^2}.$$
@@ -20,17 +21,15 @@
         $$\begin{align*}
             -\frac{\hbar^{2}}{2 m}\left[\frac{1}{r^{2}} \frac{\partial}{\partial r}\left(r^{2} \frac{\partial \psi}{\partial r}\right)+\frac{1}{r^{2} \sin \theta} \frac{\partial}{\partial \theta}\left(\sin \theta \frac{\partial \psi}{\partial \theta}\right)+\frac{1}{r^{2} \sin ^{2} \theta} \frac{\partial^{2} \psi}{\partial \phi^{2}}\right]+V\psi
         \end{align*}$$
-        <div class="quiz">
-            <button class="quizButton">
-                <span class="optionName">A</span> $1+1=3$
-            </button>
-            <button class="quizButton selected">
-                <span class="optionName">B</span> $2+2=4$
-            </button>
+        <div class="quiz" id="q1">
+            <!--QUESTION: How does the potential result in the spherical shapes of \(s\) orbitals?-->
+            <!--ANSWER A: The potential is dependent on \(q_1\) and \(q_2\).-->
+            <!--ANSWER !B: The potential is dependent on \(r\), not \(\theta\) or \(\phi\).-->
+            <!--EXPLANATION: The potential is dependent on three variables: \(q_1\), \(q_2\), and \(r\). In a hydrogen atom, \(q_1\) and \(q_2\) are constants—they don't change (under normal conditions). Therefore, the only thing that changes is \(r\), and this means that the potential is symmetric with respect to rotation. Then, since the potential energy function is symmetric, the probabiity will be too. Thus the answer is B.-->
         </div>
         <script type="text/javascript" id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         </script>
         <script src="quiz.js"></script>
-    </body>
+    </body></center>
 </html>
