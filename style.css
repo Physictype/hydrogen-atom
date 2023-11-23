@@ -57,6 +57,7 @@ a:hover {
     color: #227eff;
 }
 body {
+    text-align: center;
     width: 50%;
     display: block;
     transform: translateX(calc(50% - 8px));
