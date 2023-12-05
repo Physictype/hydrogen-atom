@@ -8,10 +8,9 @@
     </head>
     <body>
         <div id="content">
-            <h2>test</h1>
-            in progress...
+            <h2>Introduction</h2>
             You probably have seen the Bohr model of the atom, and maybe you've seen the odd shapes of electron orbitals, such as the \(s\), \(p\), \(d\), and \(f\) orbitals. But where do these come from?
-            It is a product of a century of mathematics and physics—Quantum Physics!
+            The first intuition is of the Heisenberg Uncertainty principle, but the rest—it is a product of a century of mathematics and physics, Quantum Physics!
             <br/><br/>
             Of course, if we think about the number of electrons, one will be the least complex. By
             <span class="term">
@@ -119,7 +118,7 @@
             $$\frac{1}{\Phi}\frac{\partial^2\Phi}{\partial\phi^2}=-m^2.$$
             If we look at the second equation, we have
             $$\frac{\partial^2\Phi}{\partial\phi^2}=-m^2\Phi.$$
-            <h2>Step 2: Solving the equations</h2>
+            <h2>Step 2: Solving the \(\theta\) and \(\phi\) equations</h2>
             The solutions to this differential equation are
             $$\Phi(\phi)=e^{im\phi}.$$
             Now, since if we go around a full circle in spherical coordinates, i.e, if we add \(2\pi\) (
@@ -135,7 +134,7 @@
             If you haven't seen how \(e^{i\theta}\) works, this will be a little hand-wavy, but this implies \(m\) is an integer.
             <br/>
             The equation for \(\Theta\) is a little bit complicated. However, it does give us some useful information. It tells us \(\ell\) is a positive integer, and \(-\ell\le m\le\ell\).
-            <br/>
+            <h2>Step 3: Solving the \(r\) equation</h2>
             The other equation we can actually simplify is the one on \(r\). If we set \(u(r)=rR(r)\), we end up with
             $$-\frac{\hbar^2}{2m}\frac{d^2u}{dr^2}+\left[V+\frac{\hbar^2}{2m}\frac{\ell(\ell+1)}{r^2}\right]u=Eu.$$
             Now, this is actually similar to the Schrödinger equation—except \(V\) has been replaced by \(V+\frac{\hbar^2}{2m}\frac{\ell(\ell+1)}{r^2}\). That extra term acts like the centrifugal force in classical physics, which makes sense as the electron is "orbiting" the nucleus!
@@ -162,8 +161,49 @@
             $$u\approx C\rho^{\ell+1}+D\rho^{-\ell},$$
             but \(D\rho^{-\ell}\) will go to infinity as \(\rho\) goes to zero, and we don't want that to happen, so the solution is
             $$u\approx C\rho^{\ell+1}.$$
-            Now, we set 
-            
+            Now, we take \(u(\rho)=e^{-\rho}\rho^{\ell+1}v(p)\). This looks like it will make everything worse, but it will actually help. If we substitute this into the equation, we get
+            $$\rho\frac{d^2v}{d\rho^2}+2(\ell+1-\rho)\frac{dv}{d\rho}+[\rho_0-2(\ell+1)]v=0.$$
+            Now, here's the important step. We write \(v\) as an infinite polynomial, or
+            $$v(\rho)=\sum_{j=0}^\infty c_j\rho^j$$
+            (the \(\sum\) represents the sum, the bottom and top define the bounds of the sum, and the right is what is being summed).
+            <br/>
+            Here's a little bit of calculus. The derivative of \(ax^b\) is \(abx^{b-1}\), 
+            <div class="term">
+                the derivative of a sum of functions is the sum of their derivatives,
+                <div class="defineterm">
+                    Think about it like this—the derivative is the slope of the tangent line. If you add functions, their slopes will add up too, right?
+                </div>
+            </div>
+            and
+            <div class="term">
+                the derivative of a constant function (a horizontal line) is zero.
+                <div class="defineterm">
+                    This is because the slope of the tangent line is zero.
+                </div>
+            </div>
+            Then, if we differentiate \(v\) once and twice (the notation is a bit weird), we get
+            $$\frac{dv}{d\rho}=\sum_{j=0}^\infty jc_j\rho^{j-1}=\sum_{j=0}^\infty (j+1)c_{j+1}\rho^j$$
+            and
+            $$\frac{d^2v}{d\rho^2}=\sum_{j=0}^\infty j(j+1)c_{j+1}\rho^{j-1}.$$
+            The equation then reads
+            $$\rho\sum_{j=0}j(j+1)c_{j+1}\rho^{j-1}+2(\ell+1-\rho)\sum_{j=0}^\infty (j+1)c_{j+1}\rho^j+[\rho_0-2(\ell+1)]\sum_{j=0}^\infty c_jp^j=0,$$
+            so if we rearrange and pull the \(\rho\)s into the sums, we get
+            $$\sum_{j=0}j(j+1)c_{j+1}\rho^j+2(\ell+1)\sum_{j=0}^\infty (j+1)c_{j+1}\rho^j-2\sum_{j=0}^\infty (j+1)c_{j+1}\rho^{j+1}+[\rho_0-2(\ell+1)]\sum_{j=0}^\infty c_jp^j=0.$$
+            Now, for the third sum, we can replace \(j+1\) with \(j\), and since the expression being summed gives \(0\) when \(j+1=0\), we can add it to be consistent—this gives
+            $$\sum_{j=0}j(j+1)c_{j+1}\rho^j+2(\ell+1)\sum_{j=0}^\infty (j+1)c_{j+1}\rho^j-2\sum_{j=0}^\infty jc_j\rho^j+[\rho_0-2(\ell+1)]\sum_{j=0}^\infty c_jp^j=0.$$
+            We're almost done—we have an "infinite polynomial" (called an infinite series) in \(\rho\). For this to be zero, each of the coefficients must be zero. This creates an equation relating the \(c_j\)s:
+            $$j(j+1)c_{j+1}+2(\ell+1)(j+1)c_{j+1}-2jc_j+[\rho_0-2(\ell+1)]c_j=0.$$
+            Solving for \(c_{j+1}\), we get
+            $$[j(j+1)+2(\ell+1)(j+1)]c_{j+1}=(2j-\rho_0+2(\ell+1))c_j,$$
+            so
+            $$c_{j+1}=\left\{\frac{2(j+\ell+1)-\rho_0}{(j+2\ell+2)(j+1)}\right\}c_j.$$
+            When \(j\) gets large, the constants that are added don't matter. Therefore
+            $$c_{j+1}\approx\frac{2j}{j(j+1)}c_j=\frac{2}{j+1}c_j.$$
+            Then
+            $$c_j\approx\frac{2^j}{j!}c_0,$$
+            where \(j!\) is the factorial of \(j\).
+            If the series was truly infinite, the polynomial would grow without bound! Therefore, it must stop. This is only possible if
+            \(c_{N-1}\ne0\) but \(c_N=0\) for some \(N\). The last quantum number to be discovered in this journey, \(n\), is now defined as \(N+\ell\)! And so concludes our voyage for the solution for the wave function of the hydrogen atom.
         </div>
 
         <div id="tableofcontents">
