@@ -134,7 +134,7 @@
             If you haven't seen how \(e^{i\theta}\) works, this will be a little hand-wavy, but this implies \(m\) is an integer.
             <br/>
             The equation for \(\Theta\) is a little bit complicated. However, it does give us some useful information. It tells us \(\ell\) is a positive integer, and \(-\ell\le m\le\ell\).
-            <h2>Step 3: Solving the \(r\) equation</h2>
+            <h2>Step 3: Simplifying the \(r\) equation</h2>
             The other equation we can actually simplify is the one on \(r\). If we set \(u(r)=rR(r)\), we end up with
             $$-\frac{\hbar^2}{2m}\frac{d^2u}{dr^2}+\left[V+\frac{\hbar^2}{2m}\frac{\ell(\ell+1)}{r^2}\right]u=Eu.$$
             Now, this is actually similar to the Schrödinger equation—except \(V\) has been replaced by \(V+\frac{\hbar^2}{2m}\frac{\ell(\ell+1)}{r^2}\). That extra term acts like the centrifugal force in classical physics, which makes sense as the electron is "orbiting" the nucleus!
@@ -163,7 +163,8 @@
             $$u\approx C\rho^{\ell+1}.$$
             Now, we take \(u(\rho)=e^{-\rho}\rho^{\ell+1}v(p)\). This looks like it will make everything worse, but it will actually help. If we substitute this into the equation, we get
             $$\rho\frac{d^2v}{d\rho^2}+2(\ell+1-\rho)\frac{dv}{d\rho}+[\rho_0-2(\ell+1)]v=0.$$
-            Now, here's the important step. We write \(v\) as an infinite polynomial, or
+            <h2>Step 4: Using a series to solve the \(r\) equation</h2>
+            Here's the important step. We write \(v\) as an infinite polynomial, or
             $$v(\rho)=\sum_{j=0}^\infty c_j\rho^j$$
             (the \(\sum\) represents the sum, the bottom and top define the bounds of the sum, and the right is what is being summed).
             <br/>

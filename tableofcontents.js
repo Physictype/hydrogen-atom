@@ -7,13 +7,14 @@ function callback(entries, observer) {
             break;
         }
     }
-    for (let i = 0; i < headingLinks.length; i++) {
-        if (i == index) {
-            headingLinks[i].classList = "headinglink selected"
-        } else {
-            headingLinks[i].classList = "headinglink"
-        }
-    }
+    // for (let i = 0; i < headingLinks.length; i++) {
+    //     console.log(i,index)
+    //     if (i == index) {
+    //         headingLinks[i].classList = "headinglink selected"
+    //     } else {
+    //         headingLinks[i].classList = "headinglink"
+    //     }
+    // }
 }
 
 let options = {
