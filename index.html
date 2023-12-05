@@ -7,48 +7,169 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        in progress...
-        You probably have seen the Bohr model of the atom, and maybe you've seen the odd shapes of electron orbitals, such as the \(s\), \(p\), \(d\), and \(f\) orbitals. But where do these come from?
-        It is a product of a century of mathematics and physics—Quantum Physics!
-        <br/><br/>
-        Of course, if we think about the number of electrons, one will be the least complex. By
-        <span class="term">
-            Coulomb's Law,
-            <div class="defineterm">
-                <strong>Coulomb's Law</strong> describes how charged objects interact with each other.
+        <div id="content">
+            <h2>test</h1>
+            in progress...
+            You probably have seen the Bohr model of the atom, and maybe you've seen the odd shapes of electron orbitals, such as the \(s\), \(p\), \(d\), and \(f\) orbitals. But where do these come from?
+            It is a product of a century of mathematics and physics—Quantum Physics!
+            <br/><br/>
+            Of course, if we think about the number of electrons, one will be the least complex. By
+            <span class="term">
+                Coulomb's Law,
+                <div class="defineterm">
+                    <strong>Coulomb's Law</strong> describes how charged objects interact with each other.
+                </div>
+            </span>
+            the potential energy of the electron is
+            $$V(r)=\frac{1}{4\pi\epsilon_0}\frac{e^2}{r},$$
+            where \(\frac{1}{4\pi\epsilon_0}\) is a constant, \(e\) is the charge of protons and electrons, and \(r\) is the distance between the proton and electron.
+            We can essentially ignore the proton because it has so much more mass than the electron and will hardly move.
+            <br/><br/>
+            <div class="quiz" id="q1">
+                <!--QUESTION: Why won't the proton move that much?-->
+                <!--ANSWER !A: The proton will feel the same amount of force as the electron, but won't feel as much acceleration.-->
+                <!--ANSWER B: The proton won't feel any force, and so will not move.-->
+                <!--EXPLANATION: Due to the equation for force, \(F=ma\), the acceleration on the proton is much less than the acceleration on the electron. Therefore the answer is A.-->
             </div>
-        </span>
-        the potential energy of the electron is
-        $$V(r)=-K\frac{e^2}{r},$$
-        where \(K\) is a constant, \(e\) is the charge of protons and electrons, and \(r\) is the distance between the proton and electron.
-        We can essentially ignore the proton because it has so much more mass than the electron and will hardly move.
-        <br/><br/>
-        <div class="quiz" id="q1">
-            <!--QUESTION: Why won't the proton move that much?-->
-            <!--ANSWER !A: The proton will feel the same amount of force as the electron, but won't feel as much acceleration.-->
-            <!--ANSWER B: The proton won't feel any force, and so will not move.-->
-            <!--EXPLANATION: Due to the equation for force, \(F=ma\), the acceleration on the proton is much less than the acceleration on the electron. Therefore the answer is A.-->
+            <br/>
+            Now, since this is only dependent on the distance between the two particles, we need to use
+            <span class="term" id="spherical-coordinates">
+                Spherical Coordinates.
+                <div class="defineterm">
+                    <strong>Spherical Coordinates</strong> is a coordinate system that, unlike the Cartesian coordinates most people know, use the distance to the origin and how the point is rotated from the center.
+                </div>
+            </span>
+            If we express the 
+            <span class="term" id="wave-function">
+                wave function
+                <div class="defineterm">
+                    The <strong>wave function</strong> of a particle describes where the particle is. The squared (magnitude of the) wave function at some position gives
+                        the probability that the particle is at that position.
+                </div>
+            </span>
+            in terms of a product of a wave function for
+            <span class="term" id="r-theta-phi">
+                \(r\), \(\theta\), and \(\phi\),
+                <div class="defineterm">
+                    <strong>\(\mathbf{r}\), \(\mathbf{\theta}\), and \(\mathbf{\phi}\)</strong> are the coordinates of
+                    <span class="term link" data-link="spherical-coordinates">
+                        Spherical Coordinates.
+                    </span>
+                    \(r\) is the distance from the origin,
+                    and \(\theta\) is the angle around the \(z\)-axis, and \(\phi\) is the angle down from the top of the \(z\) axis
+                    (so \(\phi=90^\circ=\frac{\pi}{2}\) would be on the unit circle on the horizontal \(xy\) plane).
+                </div>
+            </span>
+            we can turn 
+            <span class="term">
+                Schrödinger's equation
+                <div class="defineterm">
+                    <strong>Schrödinger's equation</strong> is an equation in Quantum Physics that describes how particles evolve based on their potential energy function.
+                    It is written like so:
+                    $$i\hbar\frac{\partial\psi}{\partial t}=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi.$$
+                    Here, \(\psi\) is the wave function.
+                    It looks very scary, but don't be scared—all this is describing, in more complicated terms, is that total energy
+                    is kinetic plus potential.
+                </div>
+            </span>
+            into three much more managable equations. This works because the potential energy function only depends on the distance to the nucleus, \(r\).
+            <br/>
+            In doing so, we get the orbitals of the hydrogen atom.
+            <br/>
+            Not just these, either. The math predicts other orbitals, not just \(s\), \(p\), \(d\), \(f\)—there's \(g\), \(h\), \(i\), no \(j\), of course, then \(k\), et cetra.
+            <br/>
+            For example, here's an \(i\) orbital, rendered using <a href="https://github.com/Physictype/electron-orbital-visualiser">a python program I made.</a>
+            <img src="i_orbital.png"/>
+            <br/>
+            The orbitals higher in energy than \(f\) orbitals generally have too much energy to appear in a real atom—however \(g\) and \(h\) are possible in excited states of atoms.
+            <h2>Step 1: Seperate</h2>
+            There's a lot of math in these sections, but bear with me. The steps to make the equation look better aren't as bad as they look. If we write \(\psi=R(r)Y(\theta,\phi)\), we can write the Schrödinger equation to get
+            $$-\frac{\hbar^2}{2m}\left[\frac{Y}{r^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)+\frac{R}{r^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{R}{r^2\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}\right]+VRY=ERY,$$
+            where \(V\) is the potential, which as we have discussed, is only dependent on \(r\), and \(E\) is just the energy of the electron.
+            The beauty of this is that it can be seperated into a sum of expressions, one dependent on \(\theta\) and \(\phi\), and one dependent on \(r\)!
+            To do this, first let us divide by \(YR\). This gives us
+            $$-\frac{\hbar^2}{2m}\left[\frac{1}{Rr^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)+\frac{1}{Yr^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{1}{Yr^2\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}\right]+V=E.$$
+            Now, if we divide by \(-\frac{\hbar^2}{2m}\) (or multiply by \(-\frac{2m}{\hbar^2}\)), we can take out that constant at the front:
+            $$\frac{1}{Rr^2}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)+\frac{1}{Yr^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{1}{Yr^2\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}=-\frac{2m}{\hbar^2}\left(E-V\right),$$
+            and notice how many terms have \(r^2\) in the bottom. Multiplying by \(r^2\) will make this simpler, and it gives
+            $$\frac{1}{R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)+\frac{1}{Y\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{1}{Y\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}=-\frac{2mr^2}{\hbar^2}\left(E-V\right).$$
+            So if we rearrange this, we get
+            $$\left\{\frac{1}{R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)-\frac{2mr^2}{\hbar^2}\left(V-E\right)\right\}+\left\{\frac{1}{Y\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{1}{Y\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}\right\}=0,$$
+            and finally,
+            $$\left\{\frac{1}{R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)-\frac{2mr^2}{\hbar^2}\left(V-E\right)\right\}+\frac{1}{Y}\left\{\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}\right\}=0.$$
+            We have one expression dependent only on \(r\), and one expression dependent on \(\theta\) and \(\phi\).
+            This means we can set one to some constant, and the other one will be the negative of that constant. For reasons we will not see due to their appearance in the end solving of these differential equations, this constant will be called \(\ell(\ell+1)\).
+            So we have
+            $$\frac{1}{R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)-\frac{2mr^2}{\hbar^2}\left(V-E\right)=\ell(\ell+1)$$
+            and
+            $$\frac{1}{Y}\left\{\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2Y}{\partial\phi^2}\right\}=-\ell(\ell+1).$$
+            Now, we have to seperate \(Y\). To do this, let us first cancel out the \(Y\sin^2\theta\) term found all over this equation.
+            This gives 
+            $$\sin\theta\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial Y}{\partial\theta}\right)+\frac{\partial^2Y}{\partial\phi^2}=-\ell(\ell+1)Y\sin^2\theta.$$
+            Now, we seperate \(Y\) into a function of \(\theta\) and a function of \(\phi\), i.e. \(Y(\theta,\phi)=\Theta(\theta)\Phi(\phi)\).
+            This gives
+            $$\Phi\sin\theta\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial \Theta}{\partial\theta}\right)+\Theta\frac{\partial^2\Phi}{\partial\phi^2}=-\ell(\ell+1)\Theta\Phi\sin^2\theta.$$
+            Now, we divide by \(\Theta\Phi\) to get
+            $$\frac{1}{\Theta}\sin\theta\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial \Theta}{\partial\theta}\right)+\frac{1}{\Phi}\frac{\partial^2\Phi}{\partial\phi^2}=-\ell(\ell+1)\sin^2\theta,$$
+            so, if we rearrange,
+            $$\left\{\frac{1}{\Theta}\sin\theta\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial \Theta}{\partial\theta}\right)+\ell(\ell+1)\sin^2\theta\right\}+\frac{1}{\Phi}\frac{\partial^2\Phi}{\partial\phi^2}=0.$$
+            This time, we set
+            $$\frac{1}{\Theta}\sin\theta\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial \Theta}{\partial\theta}\right)+\ell(\ell+1)\sin^2\theta=m^2,$$
+            so
+            $$\frac{1}{\Phi}\frac{\partial^2\Phi}{\partial\phi^2}=-m^2.$$
+            If we look at the second equation, we have
+            $$\frac{\partial^2\Phi}{\partial\phi^2}=-m^2\Phi.$$
+            <h2>Step 2: Solving the equations</h2>
+            The solutions to this differential equation are
+            $$\Phi(\phi)=e^{im\phi}.$$
+            Now, since if we go around a full circle in spherical coordinates, i.e, if we add \(2\pi\) (
+                <div class="term">
+                    radians
+                    <div class="defineterm">
+                        <strong>Radians</strong> are just a measure of angle, where \(360^circ\) is \(2\pi\) radians, or the circumference of a unit circle. 
+                    </div>
+                </div>
+            ) to \(\phi,\) the wave function should be the same.
+            Therefore
+            $$e^{im\phi}=e^{im(\phi+2\pi)}.$$
+            If you haven't seen how \(e^{i\theta}\) works, this will be a little hand-wavy, but this implies \(m\) is an integer.
+            <br/>
+            The equation for \(\Theta\) is a little bit complicated. However, it does give us some useful information. It tells us \(\ell\) is a positive integer, and \(-\ell\le m\le\ell\).
+            <br/>
+            The other equation we can actually simplify is the one on \(r\). If we set \(u(r)=rR(r)\), we end up with
+            $$-\frac{\hbar^2}{2m}\frac{d^2u}{dr^2}+\left[V+\frac{\hbar^2}{2m}\frac{\ell(\ell+1)}{r^2}\right]u=Eu.$$
+            Now, this is actually similar to the Schrödinger equation—except \(V\) has been replaced by \(V+\frac{\hbar^2}{2m}\frac{\ell(\ell+1)}{r^2}\). That extra term acts like the centrifugal force in classical physics, which makes sense as the electron is "orbiting" the nucleus!
+            If we divide by \(E\), we get
+            $$-\frac{\hbar^2}{2mE}\frac{d^2u}{dr^2}+\left[\frac{V}{E}+\frac{\hbar^2}{2mE}\frac{\ell(\ell+1)}{r^2}\right]u=u.$$
+            We can set \(\kappa=\frac{\sqrt{-2mE}}{\hbar}\) to get
+            $$\frac{1}{\kappa^2}\frac{d^2u}{dr^2}+\left[\frac{2m}{\hbar^2}\frac{V}{\kappa^2}-\frac{1}{\kappa^2}\frac{\ell(\ell+1)}{r^2}\right]u=u.$$
+            Now, if we rearrange this, it becomes a little bit nicer:
+            $$\frac{1}{\kappa^2}\frac{d^2u}{dr^2}=\left[1-\frac{2m}{\hbar^2}\frac{V}{\kappa^2}+\frac{1}{\kappa^2}\frac{\ell(\ell+1)}{r^2}\right]u.$$
+            Substituting our potential, we get
+            $$\frac{1}{\kappa^2}\frac{d^2u}{dr^2}=\left[1-\frac{me^2}{2\pi\epsilon_0\hbar^2\kappa}\frac{1}{\kappa r}+\frac{1}{\kappa^2}\frac{\ell(\ell+1)}{r^2}\right]u.$$
+            What we can do now is set \(\rho=\kappa r\) and \(\rho_0=\frac{me^2}{2\pi\epsilon_0\hbar^2\kappa}\). This gives
+            $$\frac{d^2u}{d\rho^2}=\left[1-\rho_0\frac{1}{\rho}+\frac{\ell(\ell+1)}{\rho^2}\right]u.$$
+            Here we look at what happens when \(\rho\to0\) and when \(\rho\to\infty\).
+            When \(\rho\to\infty\), \(1\) is largest, so we essentially have
+            $$\frac{d^2u}{d\rho^2}u\approx u,$$
+            which gives
+            $$u\approx Ae^{-\rho}+Be^{\rho}.$$
+            However, \(Be^{\rho}\) goes to infinity as \(\rho\) goes to infinity, so we cannot have that term (for normalization reasons). The solution is then
+            $$u\approx Ae^{-\rho}$$
+            When \(\rho\to0\), the \(\frac{\ell(\ell+1)}{\rho^2}\) term dominates, so
+            $$\frac{d^2u}{d\rho^2}=\frac{\ell(\ell+1)}{\rho^2}u.$$
+            The general solution of this equation is actually
+            $$u\approx C\rho^{\ell+1}+D\rho^{-\ell},$$
+            but \(D\rho^{-\ell}\) will go to infinity as \(\rho\) goes to zero, and we don't want that to happen, so the solution is
+            $$u\approx C\rho^{\ell+1}.$$
+            Now, we set 
+            
         </div>
-        <br/>
-        Now, since this is only dependent on the distance between the two particles, we need to use
-        <span class="term">
-            Spherical Coordinates.
-            <div class="defineterm">
-                <strong>Spherical Coordinates</strong> is a coordinate system that, unlike the Cartesian coordinates most people know, use the distance to the origin and how the point is rotated from the center.
-            </div>
-        </span>
-        If we use some complicated math to find simple equations for how 
-        <span class="term">
-            Schrödinger's equation,
-            <div class="defineterm">
-                <strong>Schrödinger's equation</strong> is an equation in Quantum Physics that describes how particles evolve based on their potential energy function.
-                It is written like so:
-                $$i\hbar\frac{\partial\psi}{\partial t}=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi.$$
-                Here, \(\psi\) is the wave function, which describes where the particle is, based on probability.
-                It looks very scary, but don't be scared—all this is describing, in more complicated terms, is that total energy
-                is kinetic plus potential.
-            </div>
-        </span>
+
+        <div id="tableofcontents">
+            <h3 style="font-size:25px">Table of Contents</h1>
+        </div>
+        
         
         <!-- <h2 id="hydrogen">The Hydrogen Atom</h2>
         <h3 id="hydrogen/motivation">Motivation</h3>
@@ -93,5 +214,7 @@
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
         </script>
         <script src="quiz.js"></script>
+        <script src="tableofcontents.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

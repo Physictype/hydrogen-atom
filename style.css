@@ -1,4 +1,5 @@
 html {
+    scroll-behavior: smooth;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -34,10 +35,10 @@ html {
 .quizButton:disabled {
     color: black;
 }
-.selected {
+.quizButton .selected {
     background-color: #eeeeee;
 }
-.selected > .optionName {
+.quizButton .selected > .optionName {
     background-color: #6e6eff;
     color: white;
 }
@@ -56,11 +57,11 @@ html {
 a:hover {
     color: #227eff;
 }
-body {
+#content {
     text-align: center;
-    width: 50%;
+    width: 75%;
     display: block;
-    transform: translateX(calc(50% - 8px));
+    transform: translateX(calc(33% - 8px));
 }
 
 .term {
@@ -75,7 +76,7 @@ body {
     position: absolute;
     left: clamp(0,inherit,1000000);
     right: clamp(0,inherit,1000000);
-    transform: translateY(5px);
+    transform: translateY(7px);
     background-color: rgba(238,238,238,0.85);
     display: block;
     padding: 10px;
@@ -84,19 +85,50 @@ body {
     z-index: 10;
 }
 
+.term:active {
+    background-color: rgba(255, 255, 100, 0.85);
+}
 
 .term:after {
     content: '';
     width: 100%;
-    border-bottom:3px dotted rgb(0, 157, 255);
+    border-top:3px dotted rgb(0, 157, 255);
     position: absolute;
     font-size: 16px;
-    top: 14px; /* Must be font-size minus one (16px - 1px) */
+    top: 16px; /* Must be font-size minus one (16px - 1px) */
     left: -2px;
     display: block;
-    height: 3px;
+    height: 10px;
 }
-
+/* 
 .term:hover:after {
     border-bottom: 3px dotted rgb(82, 189, 255);
+} */
+
+body {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.headinglink {
+    font-size: 20px;
+
+}
+.headinglink .selected {
+    color: rgb(0, 157, 255);
+}
+.headinglink:hover {
+    color: rgb(0, 157, 255);
+    cursor: grab;
+}
+
+/* #content {
+    overflow: scroll;
+} */
+
+#tableofcontents {
+    overflow: none;
+    position: fixed;
+    top: 0px;
+    width: 17%;
 }
